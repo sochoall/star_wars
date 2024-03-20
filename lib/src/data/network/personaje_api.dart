@@ -4,12 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:star_wars/src/data/dto/persona_dto.dart';
 
 abstract class Api {
-  Future<List<PersonajeDto>> getListaPersonajes();
+  Future<List<PersonajeDto>> getPersonajes();
 }
 
 class PersonajeApi implements Api {
   @override
-  Future<List<PersonajeDto>> getListaPersonajes() async {
+  Future<List<PersonajeDto>> getPersonajes() async {
     final response = await http
         .get(Uri.parse('https://swapi.dev/api/people/?page=2&format=json'));
     final Map personajes = jsonDecode(response.body);
