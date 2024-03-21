@@ -8,8 +8,8 @@ class PersonajeApiImplementation implements PersonajeRepository {
   PersonajeApiImplementation({required Api api}) : _api = api;
 
   @override
-  Future<List<Personaje>> getPersonajes() async {
-    final listaObtenida = await _api.getPersonajes();
+  Future<List<Personaje>> getPersonajes({int pagina = 1}) async {
+    final listaObtenida = await _api.getPersonajes(pagina: pagina);
     return listaObtenida;
   }
 }

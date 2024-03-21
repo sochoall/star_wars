@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:star_wars/src/domain/entity/personaje.dart';
-// import 'package:star_wars/src/data/dto/pelicula_dto.dart';
 
 //Datos generales del personaje
 class PersonajeDto extends Personaje {
@@ -28,7 +27,11 @@ class PersonajeDto extends Personaje {
         name: json["name"],
         birthYear: json["birth_year"],
         eyeColor: json["eye_color"],
-        gender: json["gender"],
+        gender: json['gender'] == 'male'
+            ? 'masculino'
+            : json['gender'] == 'female'
+                ? 'femenino'
+                : 'sin datos',
         hairColor: json["hair_color"],
         height: json["height"],
         mass: json["mass"],

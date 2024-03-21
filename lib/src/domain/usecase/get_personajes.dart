@@ -8,8 +8,8 @@ class GetPersonajes {
 
   final PersonajeRepository _repository;
 
-  Future<List<Personaje>> call() async {
-    final lista = await _repository.getPersonajes();
+  Future<List<Personaje>> call({int pagina = 1}) async {
+    final lista = await _repository.getPersonajes(pagina: pagina);
     return lista;
   }
 }
