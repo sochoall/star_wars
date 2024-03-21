@@ -10,8 +10,8 @@ abstract class Api {
 class PersonajeApi implements Api {
   @override
   Future<List<PersonajeDto>> getPersonajes() async {
-    final response = await http
-        .get(Uri.parse('https://swapi.dev/api/people/?page=2&format=json'));
+    final response =
+        await http.get(Uri.parse('https://swapi.dev/api/people/?format=json'));
     final Map personajes = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
