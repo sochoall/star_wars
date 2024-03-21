@@ -8,6 +8,7 @@ class Personaje {
     this.eyeColor,
     this.birthYear,
     this.gender,
+    this.films,
   });
 
   final String? name;
@@ -18,6 +19,7 @@ class Personaje {
   final String? eyeColor;
   final String? birthYear;
   final String? gender;
+  final List? films;
 
   @override
   List<Object?> get props => [
@@ -29,5 +31,6 @@ class Personaje {
         skinColor,
         birthYear,
         gender,
+        films,
       ];
 }
