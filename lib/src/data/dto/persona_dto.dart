@@ -25,7 +25,9 @@ class PersonajeDto extends Personaje {
 //Mapeamos la informacion despues de decodificar
   factory PersonajeDto.fromMap(Map<String, dynamic> json) => PersonajeDto(
         name: json["name"],
-        birthYear: json["birth_year"],
+        birthYear: json["birth_year"] == 'unknown'
+            ? 'desconocido'
+            : json["birth_year"],
         eyeColor: json["eye_color"],
         gender: json['gender'] == 'male'
             ? 'masculino'
