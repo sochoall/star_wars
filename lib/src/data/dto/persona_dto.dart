@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:star_wars/src/domain/entity/personaje.dart';
+// import 'package:star_wars/src/data/dto/pelicula_dto.dart';
 
 //Datos generales del personaje
 class PersonajeDto extends Personaje {
@@ -13,6 +14,7 @@ class PersonajeDto extends Personaje {
     super.height,
     super.mass,
     super.skinColor,
+    super.films,
   });
 
 //Convertimos de JSON a MAP
@@ -22,24 +24,29 @@ class PersonajeDto extends Personaje {
   String toJsonFormat() => json.encode(toMap());
 
 //Mapeamos la informacion despues de decodificar
-  factory PersonajeDto.fromMap(Map<String, String> json) => PersonajeDto(
-      name: json["name"],
-      birthYear: json["birthYear"],
-      eyeColor: json["eyeColor"],
-      gender: json["gender"],
-      hairColor: json["hairColor"],
-      height: json["height"],
-      mass: json["mass"],
-      skinColor: json["skinColor"]);
+  factory PersonajeDto.fromMap(Map<String, dynamic> json) => PersonajeDto(
+        name: json["name"],
+        birthYear: json["birth_year"],
+        eyeColor: json["eye_color"],
+        gender: json["gender"],
+        hairColor: json["hair_color"],
+        height: json["height"],
+        mass: json["mass"],
+        skinColor: json["skin_color"],
+        films: json['films'] == null
+            ? []
+            : List<String>.from(json['films']!.map((x) => x)),
+      );
 
   Map<String, dynamic> toMap() => {
         'name': name,
-        'birthYear': birthYear,
-        'eyeColor': eyeColor,
+        'birth_year': birthYear,
+        'eye_color': eyeColor,
         'gender': gender,
-        'hairColor': hairColor,
+        'hair_color': hairColor,
         'height': height,
         'mass': mass,
-        'skinColor': skinColor
+        'skin_color': skinColor,
+        'films': films == null ? [] : List<dynamic>.from(films!.map((x) => x)),
       };
 }
