@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:star_wars/src/domain/entity/pelicula.dart';
 import 'package:star_wars/src/domain/entity/personaje.dart';
+import 'package:star_wars/src/data/local/peliculas_data.dart';
 
 class PersonajeInfoDetalles extends StatelessWidget {
   const PersonajeInfoDetalles({
@@ -9,6 +11,12 @@ class PersonajeInfoDetalles extends StatelessWidget {
   });
 
   final Personaje personaje;
+
+  String? buscarTituloPorId(String id) {
+    final pelicula = peliculas.firstWhere((pelicula) => pelicula.id == id,
+        orElse: () => const Pelicula(id: '', title: 'Pelicula no encontrada'));
+    return pelicula.title;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +134,7 @@ class PersonajeInfoDetalles extends StatelessWidget {
                     itemCount: personaje.films?.length ?? 0,
                     itemBuilder: (context, index) {
                       final film = personaje.films![index];
-                      final nombre = film.split('/')[5];
+                      final titulo = buscarTituloPorId(film.split('/')[5]);
                       return Padding(
                         padding: const EdgeInsets.only(left: 2.0, bottom: 4),
                         child: Container(
@@ -137,12 +145,15 @@ class PersonajeInfoDetalles extends StatelessWidget {
                             color: Colors.amber,
                           ),
                           height: 80,
-                          width: 80,
-                          child: Center(
-                            child: Text(
-                              nombre,
-                              style: tt.bodyLarge!.copyWith(
-                                color: cs.onSurfaceVariant,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
+                            child: Center(
+                              child: Text(
+                                titulo ?? '',
+                                style: tt.bodyLarge!.copyWith(
+                                  color: cs.onSurfaceVariant,
+                                ),
                               ),
                             ),
                           ),
