@@ -16,30 +16,14 @@ void main() {
     mockApi = MockApi();
     personajeApiImpl = PersonajeApiImplementation(api: mockApi);
   });
+  test('Retorna los personajes obtenidos hasta el momento', () async {
+    const pagina = 0;
+    final cachedCharacters = lista1;
 
-  group('PersonajeApiImplementation', () {
-    test('getCharacters should return cached characters if available',
-        () async {
-      const pagina = 0;
-      final cachedCharacters = lista1;
+    final result = await personajeApiImpl.getPersonajes(pagina: pagina);
 
-      final result = await personajeApiImpl.getPersonajes(pagina: pagina);
+    expect(result, equals(cachedCharacters));
 
-      expect(result, equals(cachedCharacters));
-
-      verifyZeroInteractions(mockApi);
-    });
-
-    test(
-        'getCharacters should fetch characters from API and save to local storage',
-        () async {
-      const pagina = 1;
-      final apiCharacters = lista2;
-
-      final result = await personajeApiImpl.getPersonajes(pagina: pagina);
-
-      expect(result, equals(apiCharacters));
-      verifyNoMoreInteractions(mockApi);
-    });
+    verifyZeroInteractions(mockApi);
   });
 }

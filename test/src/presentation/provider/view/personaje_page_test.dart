@@ -17,7 +17,7 @@ void main() {
           .thenAnswer((_) async => [...lista1, ...lista2]);
     });
 
-    testWidgets('renders a CharacterView', (tester) async {
+    testWidgets('render de PersonajeView', (tester) async {
       await tester.pumpApp(
         const PersonajePage(),
         getPersonajes: getPersonajesMock,
