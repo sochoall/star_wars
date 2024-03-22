@@ -18,7 +18,7 @@ Características
 
 Implementación
 
-El aplicativo está estructurado utilizando la arquitectura en capas y los siguientes componentes:
+El aplicativo está estructurado utilizando Flutter 3.0.5 y arquitectura en capas y los siguientes componentes:
 
     main.dart: Punto de entrada de la aplicación.
     data: Capa de acceso a datos.
