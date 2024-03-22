@@ -3,10 +3,10 @@ class Personaje {
     this.name,
     this.height,
     this.mass,
-    this.hairColor,
-    this.skinColor,
-    this.eyeColor,
-    this.birthYear,
+    this.hair_color,
+    this.skin_color,
+    this.eye_color,
+    this.birth_year,
     this.gender,
     this.films,
   });
@@ -14,10 +14,10 @@ class Personaje {
   final String? name;
   final String? height;
   final String? mass;
-  final String? hairColor;
-  final String? skinColor;
-  final String? eyeColor;
-  final String? birthYear;
+  final String? hair_color;
+  final String? skin_color;
+  final String? eye_color;
+  final String? birth_year;
   final String? gender;
   final List? films;
 
@@ -26,10 +26,10 @@ class Personaje {
         name,
         height,
         mass,
-        hairColor,
+        hair_color,
         gender,
-        skinColor,
-        birthYear,
+        skin_color,
+        birth_year,
         gender,
         films,
       ];

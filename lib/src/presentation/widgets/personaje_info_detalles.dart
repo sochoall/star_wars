@@ -88,7 +88,7 @@ class PersonajeInfoDetalles extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 4),
                                     Text(
-                                      'Año de nacimiento: ${personaje.birthYear ?? ''}',
+                                      'Año de nacimiento: ${personaje.birth_year ?? ''}',
                                       style: tt.titleSmall!.copyWith(
                                         color: cs.onSurfaceVariant,
                                         fontWeight: FontWeight.bold,
