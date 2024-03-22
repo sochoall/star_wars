@@ -21,7 +21,7 @@ class PersonajeInfoDetalles extends StatelessWidget {
           height: 200,
           child: Card(
             elevation: 0,
-            color: cs.tertiaryContainer,
+            color: cs.primaryContainer,
             child: Column(
               children: [
                 Padding(
@@ -120,7 +120,7 @@ class PersonajeInfoDetalles extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: personaje.films?.length ?? 0,
@@ -130,11 +130,11 @@ class PersonajeInfoDetalles extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.only(left: 2.0, bottom: 4),
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
                               Radius.circular(16),
                             ),
-                            color: cs.surfaceVariant,
+                            color: Colors.amber,
                           ),
                           height: 80,
                           width: 80,
