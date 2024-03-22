@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:star_wars/src/domain/usecase/get_personajes.dart';
 import 'package:star_wars/src/presentation/provider/personajes_page/view/personaje_page.dart';
+import 'package:star_wars/src/presentation/provider/cubo_page/view/cubo_page.dart';
+import 'package:star_wars/src/presentation/provider/cubo_page/change_notifier/cubo_change_notifier.dart';
 
 class ProviderRoot extends StatelessWidget {
   const ProviderRoot({super.key, required this.getPersonaje});
@@ -10,11 +12,12 @@ class ProviderRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // - Provides UseCases down to the widget tree using Bloc's D.I widget
-    // - Later we'll use it to instantiate each Controller (if needed)
     return MultiProvider(
       providers: [
         Provider.value(value: getPersonaje),
+        ChangeNotifierProvider(
+          create: (context) => CuboChangeNotifier(),
+        )
       ],
       child: const AppView(),
     );
@@ -26,6 +29,17 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PersonajePage();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const SizedBox(
+            height: 30,
+            child: CuboPage(),
+          ),
+        ),
+        body: const PersonajePage(),
+      ),
+    );
   }
 }
